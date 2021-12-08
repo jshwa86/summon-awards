@@ -1,6 +1,6 @@
 # summon-awards
 
-![](./images/dog.jpg)se
+![](src/main/resources/META-INF/branding/logo.png)
 
 Hi! This is just a simple sample *Quarkus application* that expos a few simple REST endpoints.
 
