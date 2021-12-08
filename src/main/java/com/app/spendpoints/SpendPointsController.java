@@ -5,6 +5,10 @@ import com.app.model.InputValidationFailedResponse;
 import com.app.recordtransaction.model.Transaction;
 import com.app.spendpoints.model.SpendPointsRequest;
 import com.app.spendpoints.model.SpendPointsResponse;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.jboss.resteasy.reactive.RestPath;
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
@@ -36,6 +40,13 @@ public class SpendPointsController {
 
     @POST
     @Path("/{userIdentifier}/spend")
+    @Operation(summary="Spend points",
+            operationId = "spend points",
+            description = "This operation can be used to spend a number of points for the given user. It will return a list of results detailing which payers provided the points which were spent. If this operation is called to spend points that the user does not have, it will return an error instead of spending the points.")
+    @APIResponses({
+            @APIResponse(responseCode = "200",description = "Success",content = @Content(example = "[{\"payer\":\"UNILEVER\",\"points\":-200},{\"payer\":\"MILLER COORS\",\"points\":-4700},{\"payer\":\"DANNON\",\"points\":-100}]")),
+            @APIResponse(responseCode = "400",description = "Input validation error",content = @Content(example = "{\"errors\":[\"userIdentifier must be alphanumeric.\"]}"))
+    })
     public RestResponse<List<SpendPointsResponse>> retrievePayerPointBalanceSummary(@RestPath @Pattern(regexp = "^[A-Za-z0-9]+$", message = "userIdentifier must be alphanumeric") String userIdentifier,
                                                                                     @Valid SpendPointsRequest spendPointsRequest) {
 

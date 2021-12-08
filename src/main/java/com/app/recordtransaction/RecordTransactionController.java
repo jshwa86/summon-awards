@@ -4,6 +4,7 @@ import com.app.InMemoryDataStore;
 import com.app.payerpointbalancesummary.PayerPointBalanceSummaryController;
 import com.app.recordtransaction.model.Transaction;
 import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
@@ -37,7 +38,7 @@ public class RecordTransactionController {
                description = "This operation can be used to allocate a number of points to a specific payer. Negative point totals are allowed, but only if the payer they are associated with already have a sufficient point balance to cover the negative balance: any individual Payer's balance may not go below zero.")
     @APIResponses({
         @APIResponse(responseCode = "201",description = "Transaction recorded successfully"),
-        @APIResponse(responseCode = "400",description = "Input validation error",ref = "#InputValidationFailedResponse")
+        @APIResponse(responseCode = "400",description = "Input validation error",content = @Content(example = "{\"errors\":[\"userIdentifier must be alphanumeric.\"]}"))
     })
     public RestResponse<Void> recordTransaction(@RestPath @Pattern(regexp = "^[A-Za-z0-9]+$", message = "userIdentifier must be alphanumeric") @Parameter(description = "Identifies the user associated to this transaction") String userIdentifier,
                                                                      @Valid Transaction transaction){

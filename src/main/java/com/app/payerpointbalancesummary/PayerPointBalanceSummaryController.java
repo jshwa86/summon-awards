@@ -2,6 +2,10 @@ package com.app.payerpointbalancesummary;
 
 import com.app.InMemoryDataStore;
 import com.app.recordtransaction.model.Transaction;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.jboss.resteasy.reactive.RestPath;
 import org.jboss.resteasy.reactive.RestResponse;
 
@@ -29,6 +33,13 @@ public class PayerPointBalanceSummaryController {
 
     @GET
     @Path("/{userIdentifier}")
+    @Operation(summary="Retrieve payer point balance",
+            operationId = "Retrieve payer point balance",
+            description = "This operation retrieves a summary of the current point balances associated to each payer for a given user.")
+    @APIResponses({
+            @APIResponse(responseCode = "200",description = "Success",content = @Content(example = "{\"UNILEVER\":200,\"BLUE MOON\":1000,\"DANNON\":1600}")),
+            @APIResponse(responseCode = "400",description = "Input validation error",content = @Content(example = "{\"errors\":[\"userIdentifier must be alphanumeric.\"]}"))
+    })
     public RestResponse<Map<String, Integer>> retrievePayerPointBalanceSummaryRestOperation(@RestPath @Pattern(regexp = "^[A-Za-z0-9]+$", message = "userIdentifier must be alphanumeric") String userIdentifier){
         return RestResponse.status(RestResponse.Status.OK,
                 retrievePayerPointBalanceSummary(userIdentifier));

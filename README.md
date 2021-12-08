@@ -70,3 +70,9 @@ __  ____  __  _____   ___  __ ____  ______
 
 You can also visit http://localhost:8080/q/dev/ at this point in a web browser to see the Quarkus dev console.
 You can press ctrl+c in the command line window where you started the application in order to stop it.
+
+# API Documentation
+
+This project features automatically generated api documentation based on the [OpenAPI spec](https://swagger.io/specification/).
+
+When the application is running locally, please visit http://localhost:8080/q/swagger-ui to see the interactive API documentation. You can even call the API operations from the UI offered on this page.
