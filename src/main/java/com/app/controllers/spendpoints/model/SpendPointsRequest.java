@@ -1,4 +1,4 @@
-package com.app.spendpoints.model;
+package com.app.controllers.spendpoints.model;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;

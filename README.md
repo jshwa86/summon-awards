@@ -24,7 +24,7 @@ I used the Java11 distribution of GraalVM for running this locally. You can find
 * Go to the GraalVM releases page (link above).
 * Download the package appropriate for your machine.
 * Unpack it somewhere (I put it in `c:\dev\tools\graalvm-ce-java11-21.0.0.2`).
-* Modify your machine's PATH variable so that it include the graalvm distribution's /bin folder. This is needed so that it will use this when you invoke Java. For example I appended this to my PATH variable: `c:\dev\tools\graalvm-ce-java11-21.0.0.2\bin`
+* Modify your machine's PATH variable so that it include the graalvm distribution's /bin folder. This is needed so that it will use this when you invoke Java. For example, I appended this to my PATH variable: `c:\dev\tools\graalvm-ce-java11-21.0.0.2\bin`
 * Modify or create an environment variable called `JAVA_HOME` and set it to your graalvm folder. In my case I set it to `c:\dev\tools\graalvm-ce-java11-21.0.0.2`. This is used by Apache Maven to identify which Java installation it should use.
 
 To verify this is installed successfully, you can run `java -version` from a command prompt. You should see something like:
@@ -76,3 +76,7 @@ You can press ctrl+c in the command line window where you started the applicatio
 This project features automatically generated api documentation based on the [OpenAPI spec](https://swagger.io/specification/).
 
 When the application is running locally, please visit http://localhost:8080/q/swagger-ui to see the interactive API documentation. You can even call the API operations from the UI offered on this page.
+
+In order to make it easy to see this in action, please see the following screencapture which demonstrates how to reach this and how to test drive the operations:
+
+![](./docs/how-to-use-swagger-ui.gif)

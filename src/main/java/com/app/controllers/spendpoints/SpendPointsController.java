@@ -1,21 +1,17 @@
-package com.app.spendpoints;
+package com.app.controllers.spendpoints;
 
 import com.app.InMemoryDataStore;
-import com.app.model.InputValidationFailedResponse;
-import com.app.recordtransaction.model.Transaction;
-import com.app.spendpoints.model.SpendPointsRequest;
-import com.app.spendpoints.model.SpendPointsResponse;
+import com.app.controllers.recordtransaction.model.Transaction;
+import com.app.controllers.spendpoints.model.SpendPointsRequest;
+import com.app.controllers.spendpoints.model.SpendPointsResponse;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.jboss.resteasy.reactive.RestPath;
 import org.jboss.resteasy.reactive.RestResponse;
-import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 
 import javax.inject.Inject;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.ws.rs.Consumes;
@@ -23,12 +19,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.summingInt;
 
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)

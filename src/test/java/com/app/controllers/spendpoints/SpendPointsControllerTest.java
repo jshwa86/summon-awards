@@ -1,4 +1,4 @@
-package com.app.spendpoints;
+package com.app.controllers.spendpoints;
 
 import com.app.InMemoryDataStore;
 import io.quarkus.test.junit.QuarkusMock;

@@ -1,4 +1,4 @@
-package com.app.spendpoints.model;
+package com.app.controllers.spendpoints.model;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 

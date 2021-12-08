@@ -1,5 +1,6 @@
-package com.app;
+package com.app.controllers.recordtransaction;
 
+import com.app.InMemoryDataStore;
 import com.app.model.InputValidationFailedResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

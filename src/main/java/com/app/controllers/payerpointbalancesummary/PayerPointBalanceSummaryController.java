@@ -1,7 +1,7 @@
-package com.app.payerpointbalancesummary;
+package com.app.controllers.payerpointbalancesummary;
 
 import com.app.InMemoryDataStore;
-import com.app.recordtransaction.model.Transaction;
+import com.app.controllers.recordtransaction.model.Transaction;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
@@ -51,8 +51,11 @@ public class PayerPointBalanceSummaryController {
             return new HashMap<>();
         }
         return  recordedTransactions.stream()
-                        .collect(Collectors.groupingBy(Transaction::getPayer
-                                ,summingInt(transaction -> transaction.getPoints() - transaction.getSpentPoints())));
+                        .collect(
+                                //Group results by payer:
+                                Collectors.groupingBy(Transaction::getPayer
+                                //For each distinct payer, sum up the available points and use that as the result
+                                ,summingInt(transaction -> transaction.getUnspentPoints())));
     }
 
 

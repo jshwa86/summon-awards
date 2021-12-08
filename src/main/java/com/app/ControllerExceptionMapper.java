@@ -9,6 +9,9 @@ import javax.ws.rs.core.Response;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+/**
+ * This class provides @ServerExceptionMappers that apply to all controllers in the project
+ */
 public class ControllerExceptionMapper {
 
     /*

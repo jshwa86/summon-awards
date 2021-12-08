@@ -1,4 +1,4 @@
-package com.app.payerpointbalancesummary;
+package com.app.controllers.payerpointbalancesummary;
 
 import com.app.InMemoryDataStore;
 import io.quarkus.test.junit.QuarkusMock;

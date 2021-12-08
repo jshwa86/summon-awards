@@ -1,6 +1,6 @@
 package com.app;
 
-import com.app.recordtransaction.model.Transaction;
+import com.app.controllers.recordtransaction.model.Transaction;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 @ApplicationScoped
+/**
+ * This is used to store transactions in memory for this demo application.
+ * In the real world a more durable external datastore would be used, but this is just a demonstration so this is fine.
+ * Be aware that any data stored here will be lost when the application is restarted.
+ */
 public class InMemoryDataStore {
-
-    //TODO Should make this an interface so easier to replace
 
     private Map<String, List<Transaction>> data = new HashMap<>();
 

@@ -1,4 +1,4 @@
-package com.app.recordtransaction.model;
+package com.app.controllers.recordtransaction.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;

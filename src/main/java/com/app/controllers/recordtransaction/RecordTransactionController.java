@@ -1,8 +1,8 @@
-package com.app.recordtransaction;
+package com.app.controllers.recordtransaction;
 
 import com.app.InMemoryDataStore;
-import com.app.payerpointbalancesummary.PayerPointBalanceSummaryController;
-import com.app.recordtransaction.model.Transaction;
+import com.app.controllers.payerpointbalancesummary.PayerPointBalanceSummaryController;
+import com.app.controllers.recordtransaction.model.Transaction;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
