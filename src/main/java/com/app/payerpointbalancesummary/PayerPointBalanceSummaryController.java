@@ -12,6 +12,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -28,12 +29,19 @@ public class PayerPointBalanceSummaryController {
 
     @GET
     @Path("/{userIdentifier}")
-    public RestResponse<Map<String, Integer>> retrievePayerPointBalanceSummary(@RestPath @Pattern(regexp = "^[A-Za-z0-9]+$", message = "userIdentifier must be alphanumeric") String userIdentifier){
-        List<Transaction> recordedTransactions = inMemoryDataStore.retrieveAssociatedTransactions(userIdentifier);
+    public RestResponse<Map<String, Integer>> retrievePayerPointBalanceSummaryRestOperation(@RestPath @Pattern(regexp = "^[A-Za-z0-9]+$", message = "userIdentifier must be alphanumeric") String userIdentifier){
         return RestResponse.status(RestResponse.Status.OK,
-                recordedTransactions.stream()
+                retrievePayerPointBalanceSummary(userIdentifier));
+    }
+
+    public Map<String, Integer> retrievePayerPointBalanceSummary(String userIdentifier){
+        List<Transaction> recordedTransactions = inMemoryDataStore.retrieveAssociatedTransactions(userIdentifier);
+        if(recordedTransactions == null){
+            return new HashMap<>();
+        }
+        return  recordedTransactions.stream()
                         .collect(Collectors.groupingBy(Transaction::getPayer
-                                ,summingInt(transaction -> transaction.getPoints() - transaction.getSpentPoints()))));
+                                ,summingInt(transaction -> transaction.getPoints() - transaction.getSpentPoints())));
     }
 
 

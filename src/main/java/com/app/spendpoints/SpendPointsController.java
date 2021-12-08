@@ -41,7 +41,6 @@ public class SpendPointsController {
 
         List<Transaction> transactionList = inMemoryDataStore.retrieveAssociatedTransactions(userIdentifier);
 
-        //TODO Verify behavior like if a race condition here
 
         /* Apply the following filtering & sorting to the transaction list:
          * - Remove any transactions from our list of transactions where the points have already been spent
@@ -97,10 +96,4 @@ public class SpendPointsController {
         }
     }
 
-    @ServerExceptionMapper
-    public RestResponse<InputValidationFailedResponse> mapException(UnsupportedOperationException unsupportedOperationException) {
-        return RestResponse.status(Response.Status.BAD_REQUEST,
-                new InputValidationFailedResponse(Collections.singletonList(unsupportedOperationException.getMessage()))
-        );
-    }
 }

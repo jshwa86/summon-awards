@@ -56,6 +56,24 @@ class PayerPointBalanceSummaryControllerTest {
                 .body(is("{\"UNILEVER\":200,\"BLUE MOON\":1000,\"DANNON\":1600}"));
     }
 
+    @Test
+    public void verifyBehaviorWhenAddingNegativePoints(){
+        given()
+                .header("Content-type","application/json")
+                .body("{\"payer\":\"DANNON\",\"points\":-1000,\"timestamp\":\"2020-11-02T14:00:00.000+00:00\"}")
+                .when().post("/buddy/recordTransaction")
+                .then()
+                .statusCode(400)
+                .body(is("{\"errors\":[\"Cannot add transaction because it would cause the payer's point balance to become negative.\"]}"));
+
+        given()
+                .header("Content-type","application/json")
+                .when().get("/buddy")
+                .then()
+                .statusCode(200)
+                .body(is("{}"));
+    }
+
     private void recordTransaction(String payer, Integer points, String timestamp){
         given()
                 .header("Content-type","application/json")

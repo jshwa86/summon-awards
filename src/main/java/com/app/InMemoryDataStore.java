@@ -19,7 +19,6 @@ public class InMemoryDataStore {
         if(thisIsTheFirstTransactionForThisUser(userIdentifier)){
             data.put(userIdentifier,new ArrayList<>());
         }
-        //TODO Can sort by timestamp when adding
         data.get(userIdentifier).add(transaction);
     }
 
