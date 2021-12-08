@@ -77,6 +77,6 @@ This project features automatically generated api documentation based on the [Op
 
 When the application is running locally, please visit http://localhost:8080/q/swagger-ui to see the interactive API documentation. You can even call the API operations from the UI offered on this page.
 
-In order to make it easy to see this in action, please see the following screencapture which demonstrates how to reach this and how to test drive the operations:
+In order to make it easy to see this in action, please see the following screencapture which demonstrates how to reach this and how to test drive the operations (please click the image to see a larger view):
 
 ![](./docs/how-to-use-swagger-ui.gif)
